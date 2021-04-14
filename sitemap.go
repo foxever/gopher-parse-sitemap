@@ -145,5 +145,15 @@ func ParseIndexFromSite(sitemapURL string, consumer IndexEntryConsumer) error {
 	}
 	defer res.Body.Close()
 
+	encoding :=res.Header.Get("Content-Type")
+	if strings.Contains(encoding, "gzip") {
+		gzreader, err := gzip.NewReader(res.Body)
+		if err != nil {
+			return err
+		}
+		defer gzreader.Close()
+		return ParseIndex(gzreader, consumer) 
+	}
+
 	return ParseIndex(res.Body, consumer)
 }
