@@ -3,10 +3,12 @@
 package sitemap
 
 import (
+	"compress/gzip"
 	"encoding/xml"
 	"io"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -97,6 +99,16 @@ func ParseFromSite(url string, consumer EntryConsumer) error {
 		return err
 	}
 	defer res.Body.Close()
+
+	encoding :=res.Header.Get("Content-Type")
+	if strings.Contains(encoding, "gzip") {
+		gzreader, err := gzip.NewReader(res.Body)
+		if err != nil {
+			return err
+		}
+		defer gzreader.Close()
+		return Parse(gzreader, consumer) 
+	}
 
 	return Parse(res.Body, consumer)
 }
