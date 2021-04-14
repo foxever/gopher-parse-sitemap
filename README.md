@@ -36,16 +36,16 @@ But if you are pretty sure that you don't need to handle big-sized sitemaps, may
 Installation is pretty easy, just do:
 
 ```bash
-go get -u github.com/oxffaa/gopher-parse-sitemap
+go get -u github.com/foxever/gopher-parse-sitemap
 ```
 
 After that import it:
 ```golang
-import "github.com/oxffaa/gopher-parse-sitemap"
+import "github.com/foxever/gopher-parse-sitemap"
 ```
 
 Well done, you can start to create something awesome.
 
 ## Documentation
 
-Please, see [here](https://godoc.org/github.com/oxffaa/gopher-parse-sitemap) for documentation.
+Please, see [here](https://godoc.org/github.com/foxever/gopher-parse-sitemap) for documentation.

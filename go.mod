@@ -1,3 +1,3 @@
-module github.com/oxffaa/gopher-parse-sitemap
+module github.com/foxever/gopher-parse-sitemap
 
 go 1.13
